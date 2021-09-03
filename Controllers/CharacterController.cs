@@ -1,3 +1,4 @@
+using System.Xml;
 using System.Reflection.PortableExecutable;
 using System.IO.Enumeration;
 using System.IO;
@@ -30,12 +31,18 @@ namespace dotnet_rpg.Controllers
             return Ok(characters);
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
 
         public ActionResult<Character> GetSingle(int id)
         {
-            return Ok(characters.FirstDefault[c =>c.Id == id]);
+            return Ok(characters.FirstOrDefault(c =>c.Id == id));
         }
-
+        
+        [HttpPost]
+        public ActionResult<List<Character>> AddCharacter(Character newCharacter)
+        {
+            characters.Add(newCharacter);
+            return Ok(characters);
+        }
     }
 }

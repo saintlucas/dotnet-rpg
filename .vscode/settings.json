@@ -1,7 +1,9 @@
 {
     "editor.quickSuggestionsDelay": 1,
     "editor.tabCompletion": "onlySnippets",
-    "editor.snippetSuggestions": "bottom"
+    "editor.snippetSuggestions": "bottom",
+    "editor.quickSuggestions": true,
+    "editor.suggest.showClasses": true
 
 
 
