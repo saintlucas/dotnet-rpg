@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using dotnet_rpg.Services;
+using System.Threading.Tasks;
 
 
 namespace dotnet_rpg.Controllers
@@ -34,23 +35,23 @@ namespace dotnet_rpg.Controllers
         
         [HttpGet("GetAll")]
         
-        public ActionResult<List<Character>> Get() //IActionResult returning type because it enables us to send specific http status quotes back to the client together with requested data
+        public async Task<ActionResult<List<Character>>> Get() //IActionResult returning type because it enables us to send specific http status quotes back to the client together with requested data
         {
-            return Ok(_characterService.GetAllCharacters());
+            return Ok(await _characterService.GetAllCharacters());
         }
 
         [HttpGet("{id}")]
 
-        public ActionResult<Character> GetSingle(int id)
+        public async Task<ActionResult<Character>> GetSingle(int id)
         {
-            return Ok(_characterService.GetCharacterById(id));
+            return Ok(await _characterService.GetCharacterById(id));
         }
         
         [HttpPost]
-        public ActionResult<List<Character>> AddCharacter(Character newCharacter)
+        public async Task<ActionResult<List<Character>>> AddCharacter(Character newCharacter)
         {
             
-            return Ok(_characterService.AddCharacter(newCharacter));
+            return Ok(await _characterService.AddCharacter(newCharacter));
         }
     }
 }

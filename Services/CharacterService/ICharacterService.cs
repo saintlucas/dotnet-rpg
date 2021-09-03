@@ -1,14 +1,16 @@
+using System.Security.AccessControl;
 using System.Collections.Generic;
 using dotnet_rpg.Models;
+using System.Threading.Tasks;
 
 namespace dotnet_rpg.Services
 {
     public interface ICharacterService
     {
-         List<Character> GetAllCharacters();
+         Task<List<Character>> GetAllCharacters();
 
-         Character GetCharacterById(int id);
+         Task<Character> GetCharacterById(int id);
 
-         List<Character> AddCharacter(Character newCharacter);
+         Task<List<Character>> AddCharacter(Character newCharacter);
     }
 }
