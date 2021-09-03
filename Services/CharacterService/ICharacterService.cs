@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using dotnet_rpg.Models;
+
 namespace dotnet_rpg.Services
 {
     public interface ICharacterService

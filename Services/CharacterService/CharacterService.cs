@@ -1,24 +1,37 @@
+using System;
 using System.Security.AccessControl;
 using System.Collections.Generic;
+using System.Linq;
+using dotnet_rpg.Models;
+
+
+
+
 namespace dotnet_rpg.Services.CharacterService
 {
     public class CharacterService : ICharacterService
     {
 
-     public List<Character> AddCharacter(Character newCharacter)
-     {
-         throw new System.NoImplementedExeption();
-     }
+        private static List<Character> characters = new List<Character> {
+            new Character(), 
+            new Character {Id = 1, Name = "Sam"}
+        };
 
-    
+    public List<Character> AddCharacter(Character newCharacter)
+    {
+        characters.Add(newCharacter);
+            return characters;
+    }
+
     public List<Character> GetAllCharacters()
     {
-        throw new System.NoImplementedExeption();
+        return characters;
     }
 
     public Character GetCharacterById(int id)
     {
-        throw new System.NoImplementedExeption();
+        return characters.FirstOrDefault(c =>c.Id == id);
     }
+
     }
 }
