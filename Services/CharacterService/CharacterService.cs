@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using dotnet_rpg.Dtos.Character;
 using AutoMapper;
 using dotnet_rpg.Models;
+using dotnet_rpg.Services;
 
 
 
@@ -34,6 +35,26 @@ namespace dotnet_rpg.Services.CharacterService
         serviceResponse.Data = characters.Select(c => _mapper.Map<GetCharacterDto>(c)).ToList();//adding srvcerespns data to character
         return serviceResponse; //returns ServiceResponse object  as response
     }
+
+    public async Task <ServiceResponse<List<GetCharacterDto>>> DeleteCharacter(int id)
+    {
+        var serviceResponse = new ServiceResponse<List<GetCharacterDto>>();
+        
+        try
+        {
+            Character character= characters.First(c => c.Id == id);
+            characters.Remove(character);
+            serviceResponse.Data = characters.Select(c => _mapper.Map<GetCharacterDto>(c)).ToList();
+
+        }
+        catch (Exception ex) 
+        {
+            serviceResponse.Success = false;
+            serviceResponse.Message = ex.Message;
+        }
+        return serviceResponse; 
+    }
+
 
     public async Task<ServiceResponse<List<GetCharacterDto>>> GetAllCharacters()
     {
@@ -75,5 +96,9 @@ namespace dotnet_rpg.Services.CharacterService
         }
         return serviceResponse;
     }
+
+
+
+
     }
 }
