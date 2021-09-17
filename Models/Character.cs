@@ -17,6 +17,8 @@ namespace dotnet_rpg.Models
 
         public RPGClass Class { get; set; } = RPGClass.Knight;
 
+        public User User { get; set; }
+
 
     }
 }
