@@ -14,11 +14,12 @@ using System.Linq;
 using dotnet_rpg.Services;
 using System.Threading.Tasks;
 using dotnet_rpg.Dtos.Character;
-
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace dotnet_rpg.Controllers
 {
-    
+    [Authorize] // So every silngle method of controller is secured
     [ApiController]
     [Route("[controller]")] //we can find our controller by this name
     
@@ -33,12 +34,12 @@ namespace dotnet_rpg.Controllers
             _characterService = characterService;
         }
 
-        
         [HttpGet("GetAll")]
         
         public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> Get() //IActionResult returning type because it enables us to send specific http status quotes back to the client together with requested data
         {
-            return Ok(await _characterService.GetAllCharacters());
+            int id = int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
+            return Ok(await _characterService.GetAllCharacters(id));
         }
 
         [HttpGet("{id}")]
