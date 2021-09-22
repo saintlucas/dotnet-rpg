@@ -100,7 +100,9 @@ namespace dotnet_rpg.Services.CharacterService
 
             try
             {
-                Character character = await _context.Characters.FirstOrDefaultAsync(c => c.Id == updatedCharacter.Id);
+                Character character = await _context.Characters
+                    .Include(c => c.User)
+                    .FirstOrDefaultAsync(c => c.Id == updatedCharacter.Id);
                 if (character.User.Id == GetUserId())
                 {
                     character.Name = updatedCharacter.Name;
@@ -128,9 +130,6 @@ namespace dotnet_rpg.Services.CharacterService
             }
         return serviceResponse;
     }
-
-
-
 
     }
 }

@@ -14,7 +14,6 @@ namespace dotnet_rpg.Data
     public class AuthRepository : IAuthRepository
     {   
         private readonly DataContext _context;
-
         private readonly IConfiguration _configuration;
 
         public AuthRepository(DataContext context, IConfiguration configuration)//injecting through constructor
@@ -106,10 +105,10 @@ namespace dotnet_rpg.Data
 
         private string CreateToken(User user)
         {
-            var claims = new List<Claim>()
+            var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Username)
+                new Claim(ClaimTypes.Name, user.Username )
             };
 
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value));
@@ -119,7 +118,7 @@ namespace dotnet_rpg.Data
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = System.DateTime.Now.AddDays(1), 
+                Expires = System.DateTime.Now.AddDays(1),
                 SigningCredentials = creds
             };
 

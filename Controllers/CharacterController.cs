@@ -19,7 +19,7 @@ using System.Security.Claims;
 
 namespace dotnet_rpg.Controllers
 {
-    [Authorize] // So every silngle method of controller is secured
+    [Authorize] // So every single method of controller is secured
     [ApiController]
     [Route("[controller]")] //we can find our controller by this name
     
