@@ -12,9 +12,13 @@ namespace dotnet_rpg.Data
         {
 
         }
-        
-        public DbSet<Character> Characters {get; set;} //enables to query and save rpg characters
 
-        public DbSet<User> Users {get; set;} //creates table Users in database
+        public DbSet<Character> Characters { get; set; } //enables to query and save rpg characters
+
+        public DbSet<User> Users { get; set; } //creates table Users in database
+
+        public DbSet<Weapon> Weapons { get; set; } //creates table Waepons in database
+
     }
+
 }
