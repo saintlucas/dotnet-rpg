@@ -88,8 +88,8 @@ namespace dotnet_rpg.Migrations
                     b.Property<int>("Damage")
                         .HasColumnType("int");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

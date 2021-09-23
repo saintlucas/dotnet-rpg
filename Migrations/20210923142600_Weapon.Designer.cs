@@ -10,8 +10,8 @@ using dotnet_rpg.Data;
 namespace dotnet_rpg.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210923102543_Weapons")]
-    partial class Weapons
+    [Migration("20210923142600_Weapon")]
+    partial class Weapon
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -90,8 +90,8 @@ namespace dotnet_rpg.Migrations
                     b.Property<int>("Damage")
                         .HasColumnType("int");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
