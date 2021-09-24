@@ -11,9 +11,8 @@ using System.Threading.Tasks;
 
 namespace dotnet_rpg.Controllers
 {
-#if !DEBUG
+
     [Authorize]
-#endif
     [ApiController]
     [Route("[controller]")]
     public class WeaponController : ControllerBase
