@@ -1,12 +1,9 @@
 using dotnet_rpg.Data;
 
-
-namespace dotnet_rpg.Models
-    
+namespace dotnet_rpg.Models   
 {
     public class Character
     {
-        
         public int Id { get; set; }
         
         public string Name { get; set; } = "Frodo"; 
@@ -22,9 +19,7 @@ namespace dotnet_rpg.Models
         public RPGClass Class { get; set; } = RPGClass.Knight;
 
         public User User { get; set; }
-
+        
         public Weapon Weapon{ get; set; }
-
-
     }
 }

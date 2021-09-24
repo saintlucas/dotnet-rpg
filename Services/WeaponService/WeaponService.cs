@@ -31,13 +31,13 @@ namespace dotnet_rpg.Services.WeaponService
                 var character = await _context.Characters
                     .FirstOrDefaultAsync(c => c.Id == newWeapon.CharacterId && 
                         c.User.Id == int.Parse(_httpContextAccesor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)));
-                        //wehere User Id is equal to the Id of the currently authenticated user
-                if (character == null)
-                {
-                    response.Success = false;
-                    response.Message = "Character not found.";
-                    return response;
-                }
+                        // wehere User Id is equal to the Id of the currently authenticated user
+                if (character is null)
+                    return new ServiceResponse<GetCharacterDto>()
+                    {
+                        Success = false,
+                        Message = "Character not found."
+                    };
 
                 var weapon = new Weapon
                 {
@@ -50,8 +50,6 @@ namespace dotnet_rpg.Services.WeaponService
                 await _context.SaveChangesAsync();
 
                 response.Data = _mapper.Map<GetCharacterDto>(character);
-
-
             }
             catch (Exception ex)
             {
@@ -61,6 +59,5 @@ namespace dotnet_rpg.Services.WeaponService
             return response;
         }
     }
-
 }
 

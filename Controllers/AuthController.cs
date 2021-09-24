@@ -25,9 +25,8 @@ namespace dotnet_rpg.Controllers
             var response = await _authRepo.Register(new User {Username = request.Username}, request.Password);
 
             if (!response.Success)
-            {
                 return BadRequest(response);
-            }
+
             return Ok(response);
         }
 

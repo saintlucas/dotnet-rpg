@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace dotnet_rpg.Migrations
 {
@@ -7,8 +6,6 @@ namespace dotnet_rpg.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            
-
             migrationBuilder.CreateTable(
                 name: "Weapons",
                 columns: table => new
@@ -29,11 +26,6 @@ namespace dotnet_rpg.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Characters_UserId",
-                table: "Characters",
-                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Weapons_CharacterId",

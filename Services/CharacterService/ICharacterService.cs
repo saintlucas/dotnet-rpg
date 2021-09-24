@@ -1,9 +1,7 @@
-using System.Security.AccessControl;
 using System.Collections.Generic;
 using dotnet_rpg.Models;
 using System.Threading.Tasks;
 using dotnet_rpg.Dtos.Character;
-using dotnet_rpg.Dtos;
 
 namespace dotnet_rpg.Services
 {
@@ -18,7 +16,5 @@ namespace dotnet_rpg.Services
          Task<ServiceResponse<GetCharacterDto>> UpdateCharacter(UpdateCharacterDto updateCharacterDto);
 
          Task <ServiceResponse<List<GetCharacterDto>>> DeleteCharacter(int id);
-
-
     }
 }  

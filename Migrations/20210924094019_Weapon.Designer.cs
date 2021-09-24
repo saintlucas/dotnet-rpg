@@ -10,7 +10,7 @@ using dotnet_rpg.Data;
 namespace dotnet_rpg.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210923142600_Weapon")]
+    [Migration("20210924094019_Weapon")]
     partial class Weapon
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

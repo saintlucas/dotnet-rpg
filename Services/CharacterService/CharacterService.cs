@@ -30,9 +30,16 @@ namespace dotnet_rpg.Services.CharacterService
             _mapper = mapper;
         }
 
-        private int GetUserId() => int.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+        private int GetUserId()
+        {
+            var name = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!int.TryParse(name, out var result))
+                return -1;
 
-    public async Task<ServiceResponse<List<GetCharacterDto>>> AddCharacter(AddCharacterDto newCharacter)
+            return result;
+        }
+
+        public async Task<ServiceResponse<List<GetCharacterDto>>> AddCharacter(AddCharacterDto newCharacter)
     {
         var serviceResponse = new ServiceResponse<List<GetCharacterDto>>();
         Character character = _mapper.Map<Character>(newCharacter);

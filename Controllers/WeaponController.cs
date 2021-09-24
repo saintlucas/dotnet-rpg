@@ -11,7 +11,9 @@ using System.Threading.Tasks;
 
 namespace dotnet_rpg.Controllers
 {
+#if !DEBUG
     [Authorize]
+#endif
     [ApiController]
     [Route("[controller]")]
     public class WeaponController : ControllerBase
@@ -26,9 +28,8 @@ namespace dotnet_rpg.Controllers
         [HttpPost]
 
         public async Task<ActionResult<ServiceResponse<GetCharacterDto>>> AddWeapon(AddWeaponDto newWeapon)
-        {
-            return Ok(await _weaponService.AddWeapon(newWeapon));
-        }
+        
+              => Ok(await _weaponService.AddWeapon(newWeapon));
 
 
     }
