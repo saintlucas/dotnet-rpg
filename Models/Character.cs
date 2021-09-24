@@ -1,4 +1,5 @@
 using dotnet_rpg.Data;
+using System.Collections.Generic;
 
 namespace dotnet_rpg.Models   
 {
@@ -21,5 +22,7 @@ namespace dotnet_rpg.Models
         public User User { get; set; }
         
         public Weapon Weapon{ get; set; }
+
+        public List<Skill> Skills { get; set; }
     }
 }
