@@ -24,6 +24,13 @@ namespace dotnet_rpg.Dtos.Character
         public RPGClass Class { get; set; } = RPGClass.Knight;
 
         public GetWeaponDto Weapon { get; set; }
+        
         public List<GetSkillDto> Skills { get; set; }
+        
+        public int Fights { get; set; }
+        
+        public int Victories { get; set; }
+        
+        public int Defeats { get; set; }
     }
 }
