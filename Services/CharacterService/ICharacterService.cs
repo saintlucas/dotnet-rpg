@@ -17,6 +17,6 @@ namespace dotnet_rpg.Services
 
          Task <ServiceResponse<List<GetCharacterDto>>> DeleteCharacter(int id);
 
-         Task <ServiceResponse<List<GetCharacterDto>>> AddCharacterSkill(AddCharacterSkillDto newCharacterSkill);
+         Task <ServiceResponse<GetCharacterDto>> AddCharacterSkill(AddCharacterSkillDto newCharacterSkill);
     }   
 }  
