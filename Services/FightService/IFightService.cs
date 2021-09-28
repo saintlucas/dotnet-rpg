@@ -1,8 +1,6 @@
 using dotnet_rpg.Dtos.Fight;
 using dotnet_rpg.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace dotnet_rpg.Services.FightService
@@ -15,6 +13,6 @@ namespace dotnet_rpg.Services.FightService
 
         Task<ServiceResponse<FightResultDto>> Fight(FightRequestDto request);
 
-
+        Task<ServiceResponse<List<HighScoreDto>>> GetHighScore();
     }
 }
